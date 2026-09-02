@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mamillapalli Pavan Sai Balaji | Portfolio & Engineering Projects</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #030712;
+      color: #cbd5e1;
+      overflow-x: hidden;
+    }
+    
+    .font-code { font-family: 'JetBrains Mono', monospace; }
+
+    /* Custom Cyberpunk & IoT Neon Glow Effects */
+    .glow-cyan {
+      text-shadow: 0 0 20px rgba(6, 182, 212, 0.7);
+    }
+    .glow-purple {
+      text-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
+    }
+    
+    .box-glow {
+      box-shadow: 0 0 25px rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .box-glow:hover {
+      box-shadow: 0 0 35px rgba(6, 182, 212, 0.35), inset 0 0 15px rgba(168, 85, 247, 0.2);
+      border-color: rgba(6, 182, 212, 0.6);
+      transform: translateY(-4px);
+    }
+
+    /* Background Particle Canvas */
+    #bg-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Scroll Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Simulated Hardware OLED Screen Display */
+    .oled-screen {
+      background: #020617;
+      border: 3px solid #1e293b;
+      box-shadow: inset 0 0 12px rgba(6, 182, 212, 0.4);
+      color: #38bdf8;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Pulse Wave Animations */
+    @keyframes sonarPulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 0.4; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .sonar-active {
+      animation: sonarPulse 1.5s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen">
+
+  <canvas id="bg-canvas"></canvas>
+
+  <header class="fixed top-0 w-full z-50 backdrop-blur-md border-b border-cyan-900/30 bg-black/60">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="font-code text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-purple-400">
+        PavanBalaji<span class="text-cyan-400 animate-pulse">.dev</span>
+      </a>
+      <nav class="hidden md:flex space-x-8 font-code text-sm text-slate-300">
+        <a href="#about" class="hover:text-cyan-400 transition-colors">./About</a>
+        <a href="#skills" class="hover:text-cyan-400 transition-colors">./Skills</a>
+        <a href="#projects" class="hover:text-cyan-400 transition-colors">./Projects</a>
+        <a href="#education" class="hover:text-cyan-400 transition-colors">./Education</a>
+        <a href="#contact" class="hover:text-cyan-400 transition-colors">./Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="about" class="pt-36 pb-20 px-6 max-w-7xl mx-auto min-h-[85vh] flex flex-col justify-center">
+    <div class="max-w-4xl space-y-6 reveal">
+      <div class="inline-flex items-center gap-2 border border-cyan-500/40 bg-cyan-500/10 text-cyan-300 font-code text-xs px-4 py-2 rounded-full">
+        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+        LOVELY PROFESSIONAL UNIVERSITY // B.TECH CSE (2025 – 2029)
+      </div>
+      
+      <h1 class="text-4xl sm:text-7xl font-extrabold text-white tracking-tight leading-tight">
+        Mamillapalli <br class="hidden sm:inline"/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-purple-400 glow-cyan">Pavan Sai Balaji</span>
+      </h1>
+      
+      <p class="text-2xl text-slate-300 font-semibold">
+        Computer Science Student & Smart IoT Developer
+      </p>
+      
+      <p class="text-slate-400 text-lg leading-relaxed max-w-2xl">
+        Focused on building real-world software solutions, embedded IoT systems, and intelligent applications. Skilled in Python, C, C++, Web Technologies, and hardware integration using microcontrollers and sensor networks.
+      </p>
+
+      <div class="flex flex-wrap gap-4 pt-4 font-code text-sm">
+        <a href="#projects" class="bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-400 hover:to-teal-500 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-[0_0_25px_rgba(6,182,212,0.4)] flex items-center gap-2">
+          <i class="fa-solid fa-microchip animate-bounce"></i> Interactive Project Simulators
+        </a>
+        <a href="#contact" class="border border-cyan-500/50 hover:bg-cyan-900/20 text-cyan-300 font-bold px-8 py-4 rounded-xl transition-all">
+          <i class="fa-paper-plane fa-solid mr-2"></i> Get In Touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="max-w-7xl mx-auto px-6 py-16">
+    <div class="flex items-center gap-4 mb-12 reveal">
+      <div class="h-1 w-12 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full"></div>
+      <h2 class="text-3xl font-extrabold text-white font-code">01. <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-300">Technical Expertise</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <div class="box-glow p-8 rounded-2xl reveal">
+        <div class="flex items-center gap-3 mb-6">
+          <i class="fa-code fa-solid text-2xl text-cyan-400"></i>
+          <h3 class="text-xl font-bold text-white">Programming Languages</h3>
+        </div>
+        <div class="space-y-4 font-code text-sm">
+          <div class="flex justify-between border-b border-slate-800 pb-2">
+            <span class="text-slate-300">Python</span>
+            <span class="text-cyan-400 font-bold">Proficient</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-800 pb-2">
+            <span class="text-slate-300">C Language</span>
+            <span class="text-cyan-400 font-bold">Core</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-800 pb-2">
+            <span class="text-slate-300">C++</span>
+            <span class="text-cyan-400 font-bold">Data Structures</span>
+          </div>
+          <div class="flex justify-between pb-2">
+            <span class="text-slate-300">Embedded C</span>
+            <span class="text-cyan-400 font-bold">IoT Microcontrollers</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box-glow p-8 rounded-2xl reveal">
+        <div class="flex items-center gap-3 mb-6">
+          <i class="fa-laptop-code fa-solid text-2xl text-teal-400"></i>
+          <h3 class="text-xl font-bold text-white">Web & Developer Tools</h3>
+        </div>
+        <div class="space-y-4 font-code text-sm">
+          <div class="flex justify-between border-b border-slate-800 pb-2">
+            <span class="text-slate-300">HTML5</span>
+            <span class="text-teal-400 font-bold">Frontend</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-800 pb-2">
+            <span class="text-slate-300">CSS3</span>
+            <span class="text-teal-400 font-bold">Styling & UI</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-800 pb-2">
+            <span class="text-slate-300">JavaScript</span>
+            <span class="text-teal-400 font-bold">DOM & Interactivity</span>
+          </div>
+          <div class="flex justify-between pb-2">
+            <span class="text-slate-300">Tools</span>
+            <span class="text-teal-400 font-bold">Git, GitHub, VS Code</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box-glow p-8 rounded-2xl reveal">
+        <div class="flex items-center gap-3 mb-6">
+          <i class="fa-brain fa-solid text-2xl text-purple-400"></i>
+          <h3 class="text-xl font-bold text-white">Soft Skills</h3>
+        </div>
+        <div class="space-y-4 font-code text-sm">
+          <div class="flex justify-between border-b border-slate-800 pb-2">
+            <span class="text-slate-300">Problem-Solving</span>
+            <span class="text-purple-400 font-bold">Analytical</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-800 pb-2">
+            <span class="text-slate-300">Team Collaboration</span>
+            <span class="text-purple-400 font-bold">Active</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-800 pb-2">
+            <span class="text-slate-300">Communication</span>
+            <span class="text-purple-400 font-bold">Effective</span>
+          </div>
+          <div class="flex justify-between pb-2">
+            <span class="text-slate-300">Social Leadership</span>
+            <span class="text-purple-400 font-bold">Community Driven</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects" class="max-w-7xl mx-auto px-6 py-16">
+    <div class="flex items-center gap-4 mb-12 reveal">
+      <div class="h-1 w-12 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full"></div>
+      <h2 class="text-3xl font-extrabold text-white font-code">02. <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Featured Projects & Live Simulators</span></h2>
+    </div>
+
+    <div class="box-glow p-8 sm:p-10 rounded-3xl reveal space-y-8 mb-12">
+      <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 border-b border-slate-800 pb-6">
+        <div>
+          <span class="px-3 py-1 bg-cyan-950 text-cyan-300 border border-cyan-800 rounded-full font-code text-xs font-bold">IoT & HEALTHCARE SYSTEM</span>
+          <h3 class="text-3xl font-extrabold text-white mt-3">Smart Medicine Reminder & Pillbox System</h3>
+        </div>
+        <a href="#sim-pillbox" class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-xl font-code text-xs font-bold transition-all w-fit">
+          <i class="fa-solid fa-play mr-1"></i> Launch Hardware Simulator
+        </a>
+      </div>
+
+      <p class="text-slate-300 text-sm leading-relaxed">
+        Designed an automated IoT smart medicine box engineered for elderly care and precision dosage scheduling. Powered by a **NodeMCU (ESP8266) microcontroller and a DS3231 Real-Time Clock (RTC)** module, the system triggers active visual LED notifications, audible alerts, and OLED screen instructions without requiring external audio modules.
+      </p>
+
+      <div class="flex flex-wrap gap-2 font-code text-xs">
+        <span class="px-3 py-1 bg-slate-900 border border-cyan-900 text-cyan-300 rounded-lg">NodeMCU ESP8266</span>
+        <span class="px-3 py-1 bg-slate-900 border border-cyan-900 text-cyan-300 rounded-lg">DS3231 Real-Time Clock</span>
+        <span class="px-3 py-1 bg-slate-900 border border-cyan-900 text-cyan-300 rounded-lg">Embedded C/C++</span>
+        <span class="px-3 py-1 bg-slate-900 border border-cyan-900 text-cyan-300 rounded-lg">OLED Display</span>
+        <span class="px-3 py-1 bg-slate-900 border border-cyan-900 text-cyan-300 rounded-lg">Piezo Buzzer & LED Matrix</span>
+      </div>
+    </div>
+
+    <div id="sim-pillbox" class="box-glow rounded-3xl p-6 sm:p-10 border-2 border-cyan-500/50 reveal mb-16">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-8 border-b border-slate-800 pb-4">
+        <div>
+          <span class="text-cyan-400 font-code text-xs uppercase tracking-widest">Project 1 Live Animation</span>
+          <h3 class="text-2xl font-bold text-white">NodeMCU RTC Pillbox Hardware Simulator</h3>
+        </div>
+        <span id="pill-status-badge" class="px-4 py-1.5 bg-slate-900 text-slate-400 border border-slate-700 rounded-full font-code text-xs font-bold w-fit">STATUS: IDLE (WAITING FOR SCHEDULE)</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 space-y-3">
+            <div class="flex justify-between font-code text-xs">
+              <span class="text-slate-300">Simulate Real-Time Clock (RTC Hour)</span>
+              <span id="rtc-time-display" class="text-cyan-400 font-bold">08:00 AM</span>
+            </div>
+            <input type="range" id="time-slider" min="0" max="23" value="8" oninput="updatePillboxSim()" class="w-full accent-cyan-400 cursor-pointer">
+            <div class="flex justify-between font-code text-[10px] text-slate-500">
+              <span>00:00 (Night)</span>
+              <span class="text-amber-400">08:00 (Dose 1)</span>
+              <span class="text-amber-400">14:00 (Dose 2)</span>
+              <span class="text-amber-400">20:00 (Dose 3)</span>
+            </div>
+          </div>
+
+          <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 font-code text-xs space-y-2">
+            <div class="text-slate-400">System Log:</div>
+            <div id="sim-log-text" class="text-cyan-300">>> DS3231 RTC synced. Waiting for dosage trigger...</div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 flex flex-col items-center justify-center space-y-6">
+          <div class="w-full max-w-md oled-screen p-5 rounded-2xl">
+            <div class="flex justify-between text-[10px] text-cyan-600 mb-2 border-b border-slate-800 pb-1">
+              <span>OLED 128x64 (I2C 0x3C)</span>
+              <span id="oled-clock">08:00 AM</span>
+            </div>
+            <div id="oled-line-1" class="text-base font-bold text-cyan-300">NEXT DOSE: 08:00 AM</div>
+            <div id="oled-line-2" class="text-xs text-slate-400 mt-1">SLOT #1: ASPIRIN 100MG</div>
+          </div>
+
+          <div class="w-full max-w-md bg-slate-950 p-6 rounded-2xl border border-slate-800 flex items-center justify-around">
+            <div class="flex flex-col items-center">
+              <div id="alert-led" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-600">
+                <i class="fa-solid fa-lightbulb"></i>
+              </div>
+              <span class="font-code text-[10px] text-slate-400 mt-2">Alert LED</span>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <div id="buzzer-box" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-600">
+                <i class="fa-solid fa-volume-high"></i>
+              </div>
+              <span class="font-code text-[10px] text-slate-400 mt-2">Buzzer Alert</span>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <div id="pill-compartment" class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-600 text-xl transition-all">
+                <i class="fa-solid fa-pills"></i>
+              </div>
+              <span class="font-code text-[10px] text-slate-400 mt-2">Pill Tray</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-glow p-8 sm:p-10 rounded-3xl reveal space-y-8 mb-12">
+      <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 border-b border-slate-800 pb-6">
+        <div>
+          <span class="px-3 py-1 bg-purple-950 text-purple-300 border border-purple-800 rounded-full font-code text-xs font-bold">EMBEDDED SENSORS & WEB</span>
+          <h3 class="text-3xl font-extrabold text-white mt-3">Ultrasonic Gesture Password Lock System</h3>
+        </div>
+        <a href="#sim-gesture" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-xl font-code text-xs font-bold transition-all w-fit">
+          <i class="fa-solid fa-play mr-1"></i> Launch Gesture Simulator
+        </a>
+      </div>
+
+      <p class="text-slate-300 text-sm leading-relaxed">
+        Engineered a non-contact security system utilizing ultrasonic distance sensors to register spatial hand gestures as custom password sequences. Built a web interface using **HTML, CSS, and JavaScript** that visualizes real-time echo timing, distance thresholds, and passcode verification logic.
+      </p>
+
+      <div class="flex flex-wrap gap-2 font-code text-xs">
+        <span class="px-3 py-1 bg-slate-900 border border-purple-900 text-purple-300 rounded-lg">Ultrasonic Sensor (HC-SR04)</span>
+        <span class="px-3 py-1 bg-slate-900 border border-purple-900 text-purple-300 rounded-lg">JavaScript</span>
+        <span class="px-3 py-1 bg-slate-900 border border-purple-900 text-purple-300 rounded-lg">HTML5 / CSS3</span>
+        <span class="px-3 py-1 bg-slate-900 border border-purple-900 text-purple-300 rounded-lg">Gesture Decoding Logic</span>
+      </div>
+    </div>
+
+    <div id="sim-gesture" class="box-glow rounded-3xl p-6 sm:p-10 border-2 border-purple-500/50 reveal mb-12">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-8 border-b border-slate-800 pb-4">
+        <div>
+          <span class="text-purple-400 font-code text-xs uppercase tracking-widest">Project 2 Live Animation</span>
+          <h3 class="text-2xl font-bold text-white">Ultrasonic Gesture Lock Simulator</h3>
+        </div>
+        <span id="lock-status-badge" class="px-4 py-1.5 bg-red-950 text-red-400 border border-red-800 rounded-full font-code text-xs font-bold w-fit">SYSTEM: LOCKED 🔒</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 space-y-3">
+            <div class="flex justify-between font-code text-xs">
+              <span class="text-slate-300">Simulate Hand Distance (cm)</span>
+              <span id="distance-val-display" class="text-purple-400 font-bold">25 cm (Far)</span>
+            </div>
+            <input type="range" id="distance-slider" min="5" max="40" value="25" oninput="updateGestureSim()" class="w-full accent-purple-400 cursor-pointer">
+            <div class="flex justify-between font-code text-[10px] text-slate-500">
+              <span class="text-emerald-400">5cm (CLOSE)</span>
+              <span class="text-amber-400">15cm (MID)</span>
+              <span>40cm (OUT OF RANGE)</span>
+            </div>
+          </div>
+
+          <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 font-code text-xs space-y-3">
+            <div class="flex justify-between text-slate-400">
+              <span>Target Sequence:</span>
+              <span class="text-purple-300 font-bold">[ CLOSE -> MID -> CLOSE ]</span>
+            </div>
+            <div class="flex justify-between text-slate-400">
+              <span>Registered Inputs:</span>
+              <span id="gesture-sequence-text" class="text-cyan-400 font-bold">[ NONE ]</span>
+            </div>
+            <button onclick="resetGestureSeq()" class="w-full py-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 rounded-lg text-xs font-bold transition-all">
+              Reset Gesture Sequence
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 flex flex-col items-center justify-center space-y-6">
+          <div class="w-full max-w-md bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-6 relative text-center">
+            
+            <div class="flex justify-center items-center gap-8">
+              <div id="sonar-wave" class="w-16 h-16 rounded-full bg-purple-950/60 border-2 border-purple-500 flex items-center justify-center text-purple-300 text-2xl sonar-active">
+                <i class="fa-solid fa-wifi"></i>
+              </div>
+              <div id="lock-icon-box" class="w-16 h-16 rounded-2xl bg-red-950 border-2 border-red-500 flex items-center justify-center text-red-400 text-2xl transition-all">
+                <i id="lock-icon" class="fa-solid fa-lock"></i>
+              </div>
+            </div>
+
+            <div class="font-code text-xs text-slate-400">
+              Echo Sound Pulse Wave: <span id="pulse-ms-text" class="text-purple-400 font-bold">1450 µs</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-glow p-8 sm:p-10 rounded-3xl reveal space-y-6">
+      <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <span class="px-3 py-1 bg-teal-950 text-teal-300 border border-teal-800 rounded-full font-code text-xs font-bold">SOCIAL IMPACT & LEADERSHIP</span>
+          <h3 class="text-2xl font-bold text-white mt-2">Community Development Project</h3>
+        </div>
+        <span class="font-code text-xs text-teal-400">In Association with The Times of India</span>
+      </div>
+      <p class="text-slate-300 text-sm leading-relaxed">
+        Participated in a structured community outreach initiative in collaboration with **The Times of India**, managing group dynamics, social awareness campaigns, and field communication.
+      </p>
+    </div>
+
+  </section>
+
+  <section id="education" class="max-w-7xl mx-auto px-6 py-16">
+    <div class="flex items-center gap-4 mb-12 reveal">
+      <div class="h-1 w-12 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full"></div>
+      <h2 class="text-3xl font-extrabold text-white font-code">03. <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-300">Academic Education</span></h2>
+    </div>
+
+    <div class="space-y-6">
+      <div class="box-glow p-8 rounded-2xl flex flex-col md:flex-row justify-between md:items-center gap-4 border-l-4 border-l-cyan-400 reveal">
+        <div>
+          <h3 class="text-2xl font-bold text-white">Lovely Professional University</h3>
+          <p class="text-cyan-400 font-code text-sm mt-1">Bachelor of Technology in Computer Science and Engineering</p>
+          <p class="text-slate-400 text-xs mt-1"><i class="fa-location-dot fa-solid text-cyan-500 mr-1"></i> Punjab, India</p>
+        </div>
+        <div class="font-code text-left md:text-right">
+          <span class="px-4 py-1.5 bg-cyan-950 text-cyan-300 border border-cyan-700 rounded-full text-xs font-bold">2025 – 2029 (Pursuing)</span>
+        </div>
+      </div>
+
+      <div class="box-glow p-8 rounded-2xl flex flex-col md:flex-row justify-between md:items-center gap-4 border-l-4 border-l-teal-400 reveal">
+        <div>
+          <h3 class="text-xl font-bold text-white">SR Junior College</h3>
+          <p class="text-teal-400 font-code text-sm mt-1">Intermediate / Senior Secondary Education</p>
+        </div>
+        <div class="font-code text-left md:text-right">
+          <span class="px-3 py-1 bg-teal-950 text-teal-300 border border-teal-700 rounded-full text-xs font-bold">Completed</span>
+        </div>
+      </div>
+
+      <div class="box-glow p-8 rounded-2xl flex flex-col md:flex-row justify-between md:items-center gap-4 border-l-4 border-l-purple-400 reveal">
+        <div>
+          <h3 class="text-xl font-bold text-white">KPR Gowtham School</h3>
+          <p class="text-purple-400 font-code text-sm mt-1">Matriculation / Secondary Schooling</p>
+        </div>
+        <div class="font-code text-left md:text-right">
+          <span class="px-3 py-1 bg-purple-950 text-purple-300 border border-purple-700 rounded-full text-xs font-bold">Completed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="max-w-7xl mx-auto px-6 py-16">
+    <div class="flex items-center gap-4 mb-12 reveal">
+      <div class="h-1 w-12 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full"></div>
+      <h2 class="text-3xl font-extrabold text-white font-code">04. <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Get In Touch</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div class="space-y-6 reveal">
+        <h3 class="text-2xl font-bold text-white">Let's Collaborate on IoT & AI Projects</h3>
+        <p class="text-slate-400 leading-relaxed">
+          Always open to discussing software development, IoT hardware projects, C/C++ data structure implementations, and tech collaborations.
+        </p>
+        <div class="space-y-4 font-code text-sm pt-4">
+          <div class="flex items-center gap-4 text-slate-300">
+            <div class="w-10 h-10 rounded-xl bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div>
+              <div class="text-xs text-slate-500">INSTITUTION</div>
+              <div>Lovely Professional University</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box-glow p-8 rounded-3xl reveal">
+        <form onsubmit="event.preventDefault(); alert('Message transmitted successfully to Mamillapalli Pavan Sai Balaji!');" class="space-y-6">
+          <div>
+            <label class="block font-code text-xs text-slate-400 mb-2">Your Name</label>
+            <input type="text" placeholder="Enter name..." required class="w-full bg-slate-900/80 border border-slate-700 focus:border-cyan-400 rounded-xl px-4 py-3 text-white outline-none">
+          </div>
+          <div>
+            <label class="block font-code text-xs text-slate-400 mb-2">Email Address</label>
+            <input type="email" placeholder="name@domain.com" required class="w-full bg-slate-900/80 border border-slate-700 focus:border-cyan-400 rounded-xl px-4 py-3 text-white outline-none">
+          </div>
+          <div>
+            <label class="block font-code text-xs text-slate-400 mb-2">Message</label>
+            <textarea rows="4" placeholder="Write message..." required class="w-full bg-slate-900/80 border border-slate-700 focus:border-cyan-400 rounded-xl px-4 py-3 text-white outline-none"></textarea>
+          </div>
+          <button type="submit" class="w-full py-4 rounded-xl font-code font-bold bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-400 hover:to-teal-500 text-white shadow-lg transition-all">
+            Send Message <i class="fa-paper-plane fa-solid ml-2"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-900 mt-16 py-8 bg-black/80">
+    <div class="max-w-7xl mx-auto px-6 text-center text-slate-500 font-code text-xs">
+      <p>Portfolio Designed & Developed for <span class="text-cyan-400 font-bold">Mamillapalli Pavan Sai Balaji</span></p>
+    </div>
+  </footer>
+
+  <script>
+    // 1. SCROLL REVEAL OBSERVER
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => observer.observe(el));
+
+    // 2. IOT & NEURAL NETWORK BACKGROUND PARTICLE ANIMATION
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const particles = Array.from({ length: 45 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      radius: Math.random() * 2 + 1
+    }));
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'rgba(6, 182, 212, 0.6)';
+      ctx.strokeStyle = 'rgba(168, 85, 247, 0.12)';
+
+      particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist < 140) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+
+    // 3. PROJECT 1: SMART MEDICINE REMINDER SIMULATOR LOGIC
+    function updatePillboxSim() {
+      const hour = parseInt(document.getElementById('time-slider').value);
+      const formattedTime = hour.toString().padStart(2, '0') + ":00 " + (hour >= 12 ? 'PM' : 'AM');
+      
+      document.getElementById('rtc-time-display').innerText = formattedTime;
+      document.getElementById('oled-clock').innerText = formattedTime;
+
+      const badge = document.getElementById('pill-status-badge');
+      const oled1 = document.getElementById('oled-line-1');
+      const oled2 = document.getElementById('oled-line-2');
+      const logText = document.getElementById('sim-log-text');
+      const alertLed = document.getElementById('alert-led');
+      const buzzerBox = document.getElementById('buzzer-box');
+      const compartment = document.getElementById('pill-compartment');
+
+      if (hour === 8 || hour === 14 || hour === 20) {
+        badge.innerText = "ALARM ACTIVE: TAKE MEDICINE NOW! 💊";
+        badge.className = "px-4 py-1.5 bg-amber-950 text-amber-300 border border-amber-700 rounded-full font-code text-xs font-bold w-fit animate-pulse";
+        
+        oled1.innerText = ">>> TAKE DOSE NOW <<<";
+        oled1.className = "text-base font-bold text-amber-400 animate-pulse";
+        oled2.innerText = hour === 8 ? "DOSE 1: ASPIRIN 100MG" : hour === 14 ? "DOSE 2: VITAMIN D3" : "DOSE 3: OMEGA 3";
+
+        logText.innerText = `>> RTC Trigger Match (${formattedTime})! Activating LED, buzzer, and servo container.`;
+
+        alertLed.className = "w-10 h-10 rounded-full bg-amber-500 border-2 border-amber-300 flex items-center justify-center text-slate-950 text-xl shadow-[0_0_20px_rgba(245,158,11,0.8)] animate-bounce";
+        buzzerBox.className = "w-10 h-10 rounded-full bg-cyan-500 border-2 border-cyan-300 flex items-center justify-center text-slate-950 text-xl shadow-[0_0_20px_rgba(6,182,212,0.8)] animate-pulse";
+        compartment.className = "w-12 h-12 rounded-xl bg-emerald-950 border-2 border-emerald-400 flex items-center justify-center text-emerald-300 text-2xl shadow-[0_0_20px_rgba(16,185,129,0.5)]";
+      } else {
+        badge.innerText = "STATUS: IDLE (WAITING FOR SCHEDULE)";
+        badge.className = "px-4 py-1.5 bg-slate-900 text-slate-400 border border-slate-700 rounded-full font-code text-xs font-bold w-fit";
+
+        oled1.innerText = "SYSTEM STANDBY";
+        oled1.className = "text-base font-bold text-cyan-300";
+        oled2.innerText = "Next scheduled dose: 08:00 AM";
+
+        logText.innerText = `>> RTC clock running: ${formattedTime}. No alarm scheduled.`;
+
+        alertLed.className = "w-10 h-10 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-600";
+        buzzerBox.className = "w-10 h-10 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-600";
+        compartment.className = "w-12 h-12 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-600 text-xl";
+      }
+    }
+
+    // 4. PROJECT 2: ULTRASONIC GESTURE SIMULATOR LOGIC
+    let registeredSeq = [];
+
+    function updateGestureSim() {
+      const dist = parseInt(document.getElementById('distance-slider').value);
+      const pulseTime = Math.round(dist * 58.3);
+      
+      document.getElementById('distance-val-display').innerText = `${dist} cm (${dist < 10 ? 'CLOSE' : dist < 20 ? 'MID' : 'FAR'})`;
+      document.getElementById('pulse-ms-text').innerText = `${pulseTime} µs`;
+
+      let inputTag = null;
+      if (dist < 10) inputTag = 'CLOSE';
+      else if (dist >= 10 && dist <= 20) inputTag = 'MID';
+
+      if (inputTag && (registeredSeq.length === 0 || registeredSeq[registeredSeq.length - 1] !== inputTag)) {
+        if (registeredSeq.length < 3) {
+          registeredSeq.push(inputTag);
+          document.getElementById('gesture-sequence-text').innerText = `[ ${registeredSeq.join(' -> ')} ]`;
+          checkLockState();
+        }
+      }
+    }
+
+    function checkLockState() {
+      const badge = document.getElementById('lock-status-badge');
+      const lockBox = document.getElementById('lock-icon-box');
+      const lockIcon = document.getElementById('lock-icon');
+
+      if (registeredSeq.length === 3) {
+        if (registeredSeq[0] === 'CLOSE' && registeredSeq[1] === 'MID' && registeredSeq[2] === 'CLOSE') {
+          badge.innerText = "ACCESS GRANTED: UNLOCKED! 🔓";
+          badge.className = "px-4 py-1.5 bg-emerald-950 text-emerald-300 border border-emerald-700 rounded-full font-code text-xs font-bold w-fit animate-pulse";
+          
+          lockBox.className = "w-16 h-16 rounded-2xl bg-emerald-950 border-2 border-emerald-400 flex items-center justify-center text-emerald-300 text-3xl shadow-[0_0_25px_rgba(16,185,129,0.7)]";
+          lockIcon.className = "fa-solid fa-lock-open";
+        } else {
+          badge.innerText = "INVALID PASSCODE GESTURE! ❌";
+          badge.className = "px-4 py-1.5 bg-red-950 text-red-300 border border-red-700 rounded-full font-code text-xs font-bold w-fit";
+          
+          lockBox.className = "w-16 h-16 rounded-2xl bg-red-950 border-2 border-red-500 flex items-center justify-center text-red-400 text-3xl";
+          lockIcon.className = "fa-solid fa-lock";
+        }
+      }
+    }
+
+    function resetGestureSeq() {
+      registeredSeq = [];
+      document.getElementById('gesture-sequence-text').innerText = "[ NONE ]";
+      document.getElementById('lock-status-badge').innerText = "SYSTEM: LOCKED 🔒";
+      document.getElementById('lock-status-badge').className = "px-4 py-1.5 bg-red-950 text-red-400 border border-red-800 rounded-full font-code text-xs font-bold w-fit";
+      document.getElementById('lock-icon-box').className = "w-16 h-16 rounded-2xl bg-red-950 border-2 border-red-500 flex items-center justify-center text-red-400 text-3xl";
+      document.getElementById('lock-icon').className = "fa-solid fa-lock";
+    }
+
+    // Initialize simulation default states
+    updatePillboxSim();
+    updateGestureSim();
+  </script>
+</body>
+</html>
